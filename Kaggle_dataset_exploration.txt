@@ -1,0 +1,30 @@
+https://www.kaggle.com/azathoth42/myanimelist
+
+
+This data has three kind of files
+
+actual Version:3 files
+	AnimeList.csv
+	UserList.csv: contains information about users (username, registration date, last online date, birth date, location, lots of aggregate values
+	UserAnimeList.csv
+
+
+Filtered version: 3 files (anime_filtered.csv, animelists_filtered.csv and users_filtered.csv).
+	filter based following conditions
+		1) users who have birth date, location and gender
+
+Cleaned version: 3 files (anime_cleaned.csv, animelists_cleaned.csv and users_cleaned.csv)
+	filters:
+		1) removed users with ridiculously large number of episodes in animes which doesnt have that many
+		2) for some users, last online was 1900 year, modified that date to last animelist update timestamp
+		3) users too young and too old were deleted
+		4) watched episodes with larger than number of episodes in individual anime were fixed and seen episodes and watch time were recalculated.
+		5) anime with unknow studio or unknown source were discarded too
+		6) anime which were not yet aired are also discarded.
+
+
+AnimeList.csv: contains list of anime, with title, title synonyms, genre, studio, licencor, producer, duration, rating, score, airing date, episodes, source (manga, light novel etc.) and many other important data about individual anime providing sufficient information about trends in time about important aspects of anime. Rank is in float format in csv, but it contains only integer value. This is due to NaN values and their representation in pandas.
+
+UserList.csv: contains information about users who watch anime, namely username, registration date (join_date), last online date, birth date, gender, location, and lots of aggregated values from their anime lists.
+
+UserAnimeList.csv: contains anime lists of all users. Per each record, here is username, anime ID, score, status and timestamp when was this record last updated
